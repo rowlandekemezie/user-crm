@@ -1,0 +1,41 @@
+<!-- header for the edit and create user page -->
+<div class="page-header">
+	<h1 ng-if="user.type == 'create'">Create User</h1>
+	<h1 ng-if="user.type == 'edit'">Edit User</h1>
+</div>
+<!-- form to collect user details -->
+<form class="form-horizontal" name="editCreateForm" ng-submit="user.saveUser()">
+	<div class="form-group">
+		<label class="control-label col-sm-2">Name</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="user.userData.name">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="username" class="control-label col-sm-2">Username</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="user.userData.username">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="password" class="control-label col-sm-2">Password</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="user.userData.password">
+		</div>
+	</div>
+	<!--submit button for create and edit user -->
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-6">
+			<button type="submit" class="btn btn-lg btn-block btn-success" ng-if="user.type == 'create'">Create User</button>
+			<button type="submit" class="btn btn-lg btn-block btn-success" ng-if="user.type == 'edit'">Update User</button>
+		</div>
+	</div>
+</form>
+<!-- add error message -->
+<div class="row show-hide-message" ng-show="user.message">
+	<div class="col-sm-2 col-sm-offset-2">
+		<div class="alert alert-info">
+			{{user.message}}
+		</div>
+	</div>
+</div>
